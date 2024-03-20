@@ -1,16 +1,19 @@
 # flutter_kiniopoisk
 
-A new Flutter project.
+Flutter_kiniopoisk Viewing Application 
 
-## Getting Started
+Written in Flutter
 
-This project is a starting point for a Flutter application.
+Uses libraries:  flutter_bloc, equatable, dio
 
-A few resources to get you started if this is your first Flutter project:
+***
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Приложение для выбора фильмов на Кинопоиске
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Написано на Flutter
+
+Использованы библиотеки:   flutter_bloc, equatable, dio
+
+<img src="screenshot/Screenshot_1.png" width="225" height="400"> <img src="screenshot/Screenshot_2.png" width="225" height="400">
+
+
