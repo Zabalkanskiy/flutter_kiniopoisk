@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_kiniopoisk/domain/KinopoiskJson.dart';
+import 'package:flutter_kiniopoisk/presentation/AboutScreen.dart';
 import 'package:flutter_kiniopoisk/presentation/KinopiskEvent.dart';
 import 'package:flutter_kiniopoisk/presentation/KinopoiskBloc.dart';
 import 'package:flutter_kiniopoisk/presentation/KinopoiskState.dart';
@@ -87,7 +88,7 @@ class _CovidPageState extends State<CovidPage> {
           ),
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return AboutScreen(index: index,);
+              return AboutFilm(indexFilm: model.films[index].filmId, nameFilm: model.films[index]?.nameRu ?? "Empty name" ,);
             }));
           },);
       },

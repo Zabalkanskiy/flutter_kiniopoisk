@@ -20,15 +20,15 @@ class FilmInfo {
   dynamic coverUrl;
   dynamic logoUrl;
   int? reviewsCount;
-  int? ratingGoodReview;
+  double? ratingGoodReview;
   int? ratingGoodReviewVoteCount;
   double? ratingKinopoisk;
   int? ratingKinopoiskVoteCount;
-  int? ratingImdb;
+  double? ratingImdb;
   int? ratingImdbVoteCount;
   double? ratingFilmCritics;
   int? ratingFilmCriticsVoteCount;
-  int? ratingAwait;
+  double? ratingAwait;
   int? ratingAwaitCount;
   dynamic ratingRfCritics;
   int? ratingRfCriticsVoteCount;
@@ -127,7 +127,7 @@ class FilmInfo {
     ratingKinopoiskVoteCount: json["ratingKinopoiskVoteCount"],
     ratingImdb: json["ratingImdb"],
     ratingImdbVoteCount: json["ratingImdbVoteCount"],
-    ratingFilmCritics: json["ratingFilmCritics"].toDouble(),
+    ratingFilmCritics: json["ratingFilmCritics"],
     ratingFilmCriticsVoteCount: json["ratingFilmCriticsVoteCount"],
     ratingAwait: json["ratingAwait"],
     ratingAwaitCount: json["ratingAwaitCount"],

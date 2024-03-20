@@ -30,12 +30,14 @@ class ApiProvider {
   }
 
   Future<FilmInfo> fetchFilmInfo(String filmId) async {
+    //"https://kinopoiskapiunofficial.tech/"
     try {
       Response response = await _dio.get(
-        'https://kinopoiskapiunofficial.tech/api/v2.2/films/${filmId}/',
+        'https://kinopoiskapiunofficial.tech/api/v2.2/films/$filmId',
         options: Options(
           headers: {
             'X-API-KEY': 'e30ffed0-76ab-4dd6-b41f-4c9da2b2735b',
+            "Content-Type": "application/json"
           },
         ),
       );

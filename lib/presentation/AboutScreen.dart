@@ -18,7 +18,6 @@ class AboutFilm extends StatefulWidget {
 }
 
 class _AboutFilmState extends State<AboutFilm> {
-
   final FilmBloc _filmInfoBloc = FilmBloc();
 
   @override
@@ -28,76 +27,81 @@ class _AboutFilmState extends State<AboutFilm> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      Scaffold
-
-        (
-
-          body: BlocProvider(
-              create: (_) => _filmInfoBloc,
-              child: BlocListener<FilmBloc, FilmState>(
-                listener: (context, state) {
-                  if (state is FilmError) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(state.message!),
-                      ),
-                    );
-                  }
-                },
-                child: BlocBuilder<FilmBloc, FilmState>(
-                  builder: (context, state) {
-                    if (state is FilmInitial) {
-                      return _buildLoading();
-                    } else if (state is FilmLoading) {
-                      return _buildLoading();
-                    } else if (state is FilmLoaded) {
-                      return _nestedScroll(context, state.filmInfoModel);
-                    } else if (state is FilmError) {
-                      return Container();
-                    } else {
-                      return Container();
-                    }
-                  },
-                ),
-              )
-          )
-      );
-
+  Widget build(BuildContext context) => Scaffold(
+      body: BlocProvider(
+          create: (_) => _filmInfoBloc,
+          child: BlocListener<FilmBloc, FilmState>(
+            listener: (context, state) {
+              if (state is FilmError) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.message!),
+                  ),
+                );
+              }
+            },
+            child: BlocBuilder<FilmBloc, FilmState>(
+              builder: (context, state) {
+                if (state is FilmInitial) {
+                  return _buildLoading();
+                } else if (state is FilmLoading) {
+                  return _buildLoading();
+                } else if (state is FilmLoaded) {
+                  return _nestedScroll(context, state.filmInfoModel);
+                } else if (state is FilmError) {
+                  return Container();
+                } else {
+                  return Container();
+                }
+              },
+            ),
+          )));
 
   Widget _nestedScroll(BuildContext context, FilmInfo model) {
     return NestedScrollView(
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
           SliverAppBar(
-            expandedHeight: 200.0,
+            expandedHeight: 400.0,
             floating: false,
             pinned: true,
+            title: Text(
+              "${widget.nameFilm}",
+              style: TextStyle(color: Colors.blueGrey, fontSize: 16.0),
+            ),
+            iconTheme: IconThemeData(color: Colors.blueGrey),
             flexibleSpace: FlexibleSpaceBar(
-                centerTitle: true,
-                title: Text("Name Film ${widget.nameFilm}",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                    )),
-                background: Image.network(
-                  model?.posterUrl ?? "https://placehold.co/200",
-                  fit: BoxFit.cover,
-                )),
+              centerTitle: true,
+
+              // title: Text("Name Film ${widget.nameFilm}",
+              //     style: const TextStyle(
+              //       color: Colors.white,
+              //       fontSize: 16.0,
+              //     )),
+
+              background: Image.network(
+                model?.posterUrl ?? "https://placehold.co/400",
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ];
       },
       body: Center(
-        child: Text("Description: ${model.description}"),
-      ),
+          child: Container(
+        padding: EdgeInsets.all(8.0),
+        child: Card(
+          elevation: 5,
+          child: Padding(padding: EdgeInsets.all(8),  child:Text("${model.description}", style: TextStyle(fontSize: 14, ), textAlign: TextAlign.start,) ,) ,
+        ),
+      )
+          //  Text("Description: ${model.description}"),
+          ),
     );
-
-
-
   }
+
   Widget _buildLoading() => Center(child: CircularProgressIndicator());
 }
-
 
 Widget build(BuildContext context) {
   return Scaffold(
