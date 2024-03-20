@@ -123,7 +123,7 @@ class FilmInfo {
     reviewsCount: json["reviewsCount"],
     ratingGoodReview: json["ratingGoodReview"],
     ratingGoodReviewVoteCount: json["ratingGoodReviewVoteCount"],
-    ratingKinopoisk: json["ratingKinopoisk"].toDouble(),
+    ratingKinopoisk: json["ratingKinopoisk"]?.toDouble() ?? 0.0,
     ratingKinopoiskVoteCount: json["ratingKinopoiskVoteCount"],
     ratingImdb: json["ratingImdb"],
     ratingImdbVoteCount: json["ratingImdbVoteCount"],
